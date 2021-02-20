@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public enum OrbType { None, Past, Future }
 public class Player : MonoBehaviour
 {
+    public Camera mainCamera;
+
     public bool pastOrbOut;
     public bool futureOrbOut;
     public OrbType selectedOrb;
+    public List<Orb> Orbs;
 
     //variables for movement
     public float maxSpeed;
@@ -17,6 +20,7 @@ public class Player : MonoBehaviour
 
     //variables for UI Interactions
     public GameObject txtOrbType;
+    public GameObject txtHelper;
 
     void Start()
     {
@@ -50,13 +54,41 @@ public class Player : MonoBehaviour
     {
         if (selectedOrb != OrbType.None)
         {
-
+            if (Orbs[(int)selectedOrb].isActive)
+            {
+                Orbs[(int)selectedOrb].Recall();
+            }
         }
     }
 
-    public void OnUse(Target target)
+    public void OnUse()
     {
+        Debug.Log(mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
 
+        RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero);
+
+        if (hit)
+        {
+            if (hit.transform.CompareTag("Target"))
+            {
+                Target t = hit.transform.GetComponent<Target>();
+
+                switch (t.targetType)
+                {
+                    case TargetType.door:
+                        break;
+                    case TargetType.lever:
+                        break;
+                    case TargetType.orb:
+                        break;
+                    case TargetType.sign:
+                        break;
+                    case TargetType.tunnel:
+                        UseTunnel(t.otherEnd);
+                        break;
+                }
+            }
+        }
     }
 
     void UseSwitch(Switch s)

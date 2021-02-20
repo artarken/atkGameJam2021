@@ -9,7 +9,7 @@ public class Target : MonoBehaviour
     public TargetType targetType;
 
     //Orb Target
-    public int orbSize;
+    public int regionID;
 
     //Tunnel Target
     public Target otherEnd;

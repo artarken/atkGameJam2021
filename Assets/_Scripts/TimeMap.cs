@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orb : MonoBehaviour
+public class TimeMap : MonoBehaviour
 {
-    public bool isActive;
-    public int size;
-    public TimeMap timeMap;
+    public List<GameObject> ModifiedRegions;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +16,5 @@ public class Orb : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void Recall()
-    {
-
     }
 }
