@@ -5,8 +5,11 @@ using UnityEngine;
 public class Orb : MonoBehaviour
 {
     public bool isActive;
-    public int size;
     public TimeMap timeMap;
+    public TimeMap presentMap;
+
+    public Sprite inSprite;
+    public Sprite outSprite;
 
     public Target cuurentTarget;
 

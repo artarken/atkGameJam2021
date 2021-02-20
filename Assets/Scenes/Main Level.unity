@@ -740,7 +740,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1788,8 +1788,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  size: 0
-  timeMap: {fileID: 0}
+  timeMap: {fileID: 789942421}
+  presentMap: {fileID: 975131322}
+  inSprite: {fileID: 6358399820313423818, guid: 7934fc66fc5131b4995cc8c81472475a, type: 3}
+  outSprite: {fileID: 4105280111269541229, guid: 7934fc66fc5131b4995cc8c81472475a, type: 3}
   cuurentTarget: {fileID: 0}
 --- !u!212 &1190327098
 SpriteRenderer:
@@ -2338,8 +2340,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  size: 0
-  timeMap: {fileID: 0}
+  timeMap: {fileID: 1718360600}
+  presentMap: {fileID: 975131322}
+  inSprite: {fileID: -7382760485041115225, guid: 7934fc66fc5131b4995cc8c81472475a, type: 3}
+  outSprite: {fileID: 8912484908907282893, guid: 7934fc66fc5131b4995cc8c81472475a, type: 3}
   cuurentTarget: {fileID: 0}
 --- !u!212 &1920621800
 SpriteRenderer:
