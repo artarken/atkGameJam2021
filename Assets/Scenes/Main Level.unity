@@ -214,6 +214,7 @@ MonoBehaviour:
   maxSpeed: 0
   acceleration: 0
   txtOrbType: {fileID: 1413562956}
+  txtHelper: {fileID: 1025938616}
 --- !u!212 &76410396
 SpriteRenderer:
   m_ObjectHideFlags: 0

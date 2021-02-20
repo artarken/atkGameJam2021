@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void UseSwitch(Switch s)
+    void UseSwitch(Lever s)
     {
 
     }
