@@ -18,20 +18,33 @@ public class Target : MonoBehaviour
     //Helper Text (If applicable)
     public string helpersLineActive;
     public string helpersLineNotActive;
+    public string helpersLineOther;
 
     //Door Target
     public Door thisDoor;
 
     //Switch Target
-    public Lever thisSwitch;
+    public Lever thisLever;
 
     void Start()
     {
-        
+        if (targetType == TargetType.door)
+        {
+            thisDoor = this.transform.GetComponent<Door>();
+        }
+        else if (targetType == TargetType.lever)
+        {
+            thisLever = this.transform.GetComponent<Lever>();
+        }
     }
 
     void Update()
     {
         
+    }
+
+    public void Unlock()
+    {
+
     }
 }

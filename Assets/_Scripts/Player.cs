@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public enum OrbType { None, Past, Future }
+public enum OrbType { None = -1, Past, Future }
 public class Player : MonoBehaviour
 {
     public Camera mainCamera;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     //variables for UI Interactions
     public GameObject txtOrbType;
     public GameObject txtHelper;
+    public GameObject imgHelperBubble;
 
     void Start()
     {
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
 
         if (hit)
         {
-            if (hit.transform.CompareTag("Target"))
+            if (hit.transform.CompareTag("Target") || hit.transform.CompareTag("Orb Target"))
             {
                 Target t = hit.transform.GetComponent<Target>();
 
@@ -78,8 +79,28 @@ public class Player : MonoBehaviour
                     case TargetType.door:
                         break;
                     case TargetType.lever:
+                        if (t.thisLever.isPressed)
+                        {
+                            ShowHelperText(t.helpersLineNotActive);
+                        }
+                        else
+                        {
+                            UseLever(t.thisLever);
+                            ShowHelperText(t.helpersLineActive);
+                        }
                         break;
                     case TargetType.orb:
+                        LayerMask mask = LayerMask.GetMask("Wall");
+
+                        if (Physics2D.Linecast(transform.position, t.transform.position, mask))
+                        {
+                            ShowHelperText("The Orbs can't move through solid walls");
+                        }
+                        else
+                        {
+                            ThrowOrb(t);
+                            ShowHelperText(t.helpersLineActive);
+                        }
                         break;
                     case TargetType.sign:
                         break;
@@ -91,9 +112,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    void UseSwitch(Lever s)
+    void UseLever(Lever l)
     {
-
+        l.isPressed = true;
+        l.unlockTarget.Unlock();
     }
 
     void UseTunnel(Target exit)
@@ -121,5 +143,19 @@ public class Player : MonoBehaviour
             case OrbType.Past:
                 break;
         }
+    }
+
+    public void ShowHelperText(string helperText)
+    {
+        txtHelper.SetActive(true);
+        imgHelperBubble.SetActive(true);
+        txtHelper.GetComponent<Text>().text = helperText;
+    }
+
+    void ClearHelperText()
+    {
+        txtHelper.GetComponent<Text>().text = "";
+        txtHelper.SetActive(false);
+        imgHelperBubble.SetActive(false);
     }
 }

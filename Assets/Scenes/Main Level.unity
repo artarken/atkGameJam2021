@@ -208,13 +208,13 @@ MonoBehaviour:
   futureOrbOut: 0
   selectedOrb: 0
   Orbs:
-  - {fileID: 0}
   - {fileID: 654978170}
   - {fileID: 1991957675}
   maxSpeed: 0
   acceleration: 0
   txtOrbType: {fileID: 1413562956}
   txtHelper: {fileID: 1025938616}
+  imgHelperBubble: {fileID: 0}
 --- !u!212 &76410396
 SpriteRenderer:
   m_ObjectHideFlags: 0
