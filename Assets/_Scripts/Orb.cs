@@ -8,6 +8,8 @@ public class Orb : MonoBehaviour
     public int size;
     public TimeMap timeMap;
 
+    public Target cuurentTarget;
+
     // Start is called before the first frame update
     void Start()
     {

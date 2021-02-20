@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 7934fc66fc5131b4995cc8c81472475a
+guid: 5f2a1d44a5ac20a47baac671ccc6e2e9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6358399820313423818
-    second: Past_In
+      213: 7761164934745614181
+    second: Present1_3
   - first:
-      213: -7382760485041115225
-    second: Future_In
+      213: 7065695972329873585
+    second: Present1_4
   - first:
-      213: 4105280111269541229
-    second: Past_Out
+      213: 5365819825509365123
+    second: Present1_2
   - first:
-      213: 8912484908907282893
-    second: Future_Out
+      213: 1138448938875780972
+    second: Present1_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -87,7 +87,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -99,7 +99,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Past_In
+      name: Present1_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 8
-        width: 8
-        height: 8
+        x: 76
+        y: 428
+        width: 120
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acf60b5c2f29d3850800000000000000
-      internalID: 6358399820313423818
+      spriteID: 567eab2436235bb60800000000000000
+      internalID: 7761164934745614181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Future_In
+      name: Present1_4
       rect:
         serializedVersion: 2
-        x: 8
-        y: 8
-        width: 8
-        height: 8
+        x: 561
+        y: 425
+        width: 120
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7af6553547a2b8990800000000000000
-      internalID: -7382760485041115225
+      spriteID: 1b061a91d056e0260800000000000000
+      internalID: 7065695972329873585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Past_Out
+      name: Present1_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 8
-        height: 8
+        x: 113
+        y: 380
+        width: 46
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6572bfa282e8f830800000000000000
-      internalID: 4105280111269541229
+      spriteID: 385fb34b3b8377a40800000000000000
+      internalID: 5365819825509365123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Future_Out
+      name: Present1_1
       rect:
         serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 8
+        x: 166
+        y: 253
+        width: 120
+        height: 120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc1c275edc18fab70800000000000000
-      internalID: 8912484908907282893
+      spriteID: c6f7c9437459ccf00800000000000000
+      internalID: 1138448938875780972
       vertices: []
       indices: 
       edges: []

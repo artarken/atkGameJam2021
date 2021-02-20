@@ -96,6 +96,10 @@ public class Player : MonoBehaviour
                         {
                             ShowHelperText("The Orbs can't move through solid walls");
                         }
+                        else if (t.isActive)
+                        {
+                            ShowHelperText("There is already an orb over there, you need to recall it to replace it.");
+                        }
                         else
                         {
                             ThrowOrb(t);
@@ -103,6 +107,7 @@ public class Player : MonoBehaviour
                         }
                         break;
                     case TargetType.sign:
+                        ShowHelperText(t.helpersLineActive);
                         break;
                     case TargetType.tunnel:
                         UseTunnel(t.otherEnd);
