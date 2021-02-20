@@ -15,8 +15,11 @@ public class Player : MonoBehaviour
     public List<Orb> Orbs;
 
     //variables for movement
+    public InputAction moveAction;
     public float maxSpeed;
     public float acceleration;
+    private Vector2 direction;
+    private Rigidbody2D rb;
 
     //variables for UI Interactions
     public GameObject txtOrbType;
@@ -25,13 +28,26 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+        rb = this.transform.GetComponent<Rigidbody2D>();
+        moveAction.Enable();
+    }
+
+    private void FixedUpdate()
+    {
+        if (moveAction.ReadValue<Vector2>() != Vector2.zero)
+        {
+            rb.velocity = moveAction.ReadValue<Vector2>()*maxSpeed;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     //Input controls
     public void OnMove()
     {
-
+        
     }
     
     public void OnOrbSwitch()
@@ -49,6 +65,7 @@ public class Player : MonoBehaviour
                 break;
         }
         txtOrbType.GetComponent<Text>().text = selectedOrb.ToString();
+        Debug.Log(selectedOrb);
     }
 
     public void OnRecall()
