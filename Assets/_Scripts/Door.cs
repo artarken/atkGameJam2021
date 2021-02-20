@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public bool isLocked;
+    public bool isOpen;
+
     // Start is called before the first frame update
     void Start()
     {

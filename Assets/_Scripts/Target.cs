@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TargetType { orb, tunnel, door }
+public enum TargetType { orb, tunnel, door, sign, lever }
 public class Target : MonoBehaviour
 {
 
