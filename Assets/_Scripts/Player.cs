@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //keyboard cotrols
+        //non-movement controls
     }
 
     //used for physics movement
