@@ -5,11 +5,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public enum OrbType { None = -1, Past, Future }
+public enum AudioIndex { door, lever, locked, plate, vent, important}
 public class Player : MonoBehaviour
 {
     public Camera mainCamera;
     public GameObject mainWorld;
     public GameObject thisSprite;
+    public List<AudioSource> audioSources;
 
     public bool pastOrbOut;
     public bool futureOrbOut;
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
         }
         else if (c.transform.CompareTag("Plate"))
         {
+            audioSources[(int)AudioIndex.plate].Play();
             if (c.transform.GetComponent<Target>().thisLever.isPressed)
             {
                 ShowHelperText(c.transform.GetComponent<Target>().helpersLineNotActive);
@@ -126,6 +129,7 @@ public class Player : MonoBehaviour
                         {
                             if (t.thisDoor.isLocked)
                             {
+                                audioSources[(int)AudioIndex.locked].Play();
                                 ShowHelperText(t.helpersLineActive[0]);
                             }
                             else if (t.thisDoor.isOpen)
@@ -134,12 +138,14 @@ public class Player : MonoBehaviour
                             }
                             else
                             {
+                                audioSources[(int)AudioIndex.door].Play();
                                 t.thisDoor.Open();
                                 ShowHelperText(t.helpersLineOther);
                             }
                         }
                         else
                         {
+                            audioSources[(int)AudioIndex.important].Play();
                             ShowHelperText("You can't reach that");
                         }
                         break;
@@ -152,12 +158,14 @@ public class Player : MonoBehaviour
                             }
                             else
                             {
+                                audioSources[(int)AudioIndex.lever].Play();
                                 UseLever(t.thisLever);
                                 ShowHelperText(t.helpersLineActive[0]);
                             }
                         }
                         else
                         {
+                            audioSources[(int)AudioIndex.important].Play();
                             ShowHelperText("You can't reach that");
                         }
                         break;
@@ -166,10 +174,12 @@ public class Player : MonoBehaviour
 
                         if (Physics2D.Linecast(transform.position, t.transform.position, mask))
                         {
+                            audioSources[(int)AudioIndex.important].Play();
                             ShowHelperText("The Orbs can't move through solid walls");
                         }
                         else if (t.isActive)
                         {
+                            audioSources[(int)AudioIndex.important].Play();
                             ShowHelperText("There is already an orb over there, you need to recall it to replace it.");
                         }
                         else if (selectedOrb == OrbType.None)
@@ -178,11 +188,12 @@ public class Player : MonoBehaviour
                         }
                         else if (Orbs[(int)selectedOrb].isActive)
                         {
+                            audioSources[(int)AudioIndex.important].Play();
                             ShowHelperText("You have to recall the orb before you can use it again");
                         }
                         else
                         {
-                            //canChangeOrb = false;
+                            audioSources[(int)AudioIndex.important].Play();
                             ThrowOrb(t);
                             ShowHelperText(t.helpersLineActive[(int)selectedOrb]);
                         }
@@ -190,21 +201,24 @@ public class Player : MonoBehaviour
                     case TargetType.sign:
                         if (Vector2.Distance(this.transform.position, mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue())) <= reachDistance)
                         {
-
+                            audioSources[(int)AudioIndex.important].Play();
                             ShowHelperText(t.helpersLineActive[0]);
                         }
                         else
                         {
+                            audioSources[(int)AudioIndex.important].Play();
                             ShowHelperText("You can't reach that");
                         }
                         break;
                     case TargetType.tunnel:
                         if (Vector2.Distance(this.transform.position, hit.transform.position) <= 0.5f)
                         {
+                            audioSources[(int)AudioIndex.vent].Play();
                             UseTunnel(t.otherEnd);
                         }
                         else
                         {
+                            audioSources[(int)AudioIndex.important].Play();
                             ShowHelperText("You can't reach that");
                         }
                         break;
