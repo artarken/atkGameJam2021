@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     public OrbType selectedOrb;
     public List<Orb> Orbs;
 
+    [SerializeField]
+    //private bool canChangeOrb = true;
+
     public float reachDistance;
 
     //variables for movement
@@ -52,7 +55,15 @@ public class Player : MonoBehaviour
         }
         else if (c.transform.CompareTag("Plate"))
         {
-
+            if (c.transform.GetComponent<Target>().thisLever.isPressed)
+            {
+                ShowHelperText(c.transform.GetComponent<Target>().helpersLineNotActive);
+            }
+            else
+            {
+                UseLever(c.transform.GetComponent<Target>().thisLever);
+                ShowHelperText(c.transform.GetComponent<Target>().helpersLineActive[0]);
+            }
         }
     }
 
@@ -163,8 +174,13 @@ public class Player : MonoBehaviour
                         {
                             ShowHelperText(t.helpersLineOther);
                         }
+                        else if (Orbs[(int)selectedOrb].isActive)
+                        {
+                            ShowHelperText("You have to recall the orb before you can use it again");
+                        }
                         else
                         {
+                            //canChangeOrb = false;
                             ThrowOrb(t);
                             ShowHelperText(t.helpersLineActive[(int)selectedOrb]);
                         }
@@ -181,7 +197,7 @@ public class Player : MonoBehaviour
                         }
                         break;
                     case TargetType.tunnel:
-                        if (Vector2.Distance(this.transform.position, mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue())) <= reachDistance)
+                        if (Vector2.Distance(this.transform.position, hit.transform.position) <= 0.5f)
                         {
                             UseTunnel(t.otherEnd);
                         }
@@ -209,26 +225,17 @@ public class Player : MonoBehaviour
 
     void ThrowOrb(Target target)
     {
+        Orbs[(int)selectedOrb].presentMap.ModifiedRegions[target.regionID].SetActive(false);
+        Orbs[(int)selectedOrb].timeMap.ModifiedRegions[target.regionID].SetActive(true);
+        Orbs[(int)selectedOrb].curentTarget = target;
+        Orbs[(int)selectedOrb].isActive = true;
 
-
-        switch (selectedOrb)
-        {
-            case OrbType.Future:
-                break;
-            case OrbType.Past:
-                break;
-        }
+        //canChangeOrb = true;
     }
 
     void RecallOrb()
     {
-        switch (selectedOrb)
-        {
-            case OrbType.Future:
-                break;
-            case OrbType.Past:
-                break;
-        }
+        
     }
 
     public void ShowHelperText(string helperText)

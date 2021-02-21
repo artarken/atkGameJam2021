@@ -11,11 +11,13 @@ public class Orb : MonoBehaviour
     public Sprite inSprite;
     public Sprite outSprite;
 
-    public Target cuurentTarget;
+    public SpriteRenderer rend;
+
+    public Target curentTarget;
 
     void Start()
     {
-        
+        rend = this.transform.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -23,8 +25,27 @@ public class Orb : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+        if(c.transform.CompareTag("Orb Target"))
+        {
+            rend.sprite = outSprite;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D c)
+    {
+        if (c.transform.CompareTag("Orb Target"))
+        {
+            rend.sprite = inSprite;
+        }
+    }
+
     public void Recall()
     {
-
+        timeMap.ModifiedRegions[curentTarget.regionID].SetActive(false);
+        presentMap.ModifiedRegions[curentTarget.regionID].SetActive(true);
+        curentTarget = null;
+        isActive = false;
     }
 }
