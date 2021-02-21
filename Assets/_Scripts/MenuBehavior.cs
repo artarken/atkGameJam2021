@@ -25,4 +25,9 @@ public class MenuBehavior : MonoBehaviour
     {
         SceneManager.LoadScene("Level 0");
     }
+
+    public void OnExit()
+    {
+        Application.Quit();
+    }
 }

@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     public GameObject txtOrbType;
     public GameObject txtHelper;
     public GameObject imgHelperBubble;
+    public GameObject contGameOver;
+    public Text txtFinishTime;
 
     void Start()
     {
@@ -70,12 +72,19 @@ public class Player : MonoBehaviour
                 ShowHelperText(c.transform.GetComponent<Target>().helpersLineActive[0]);
             }
         }
+        else if (c.transform.CompareTag("Finish"))
+        {
+            audioSources[(int)AudioIndex.vent].Play();
+            moveAction.Disable();
+            contGameOver.SetActive(true);
+            txtFinishTime.text = Time.timeSinceLevelLoad + " Seconds";
+        }
     }
 
     //Input controls
-    public void OnMove()
+    public void OnExit()
     {
-        
+        Application.Quit();
     }
     
     public void OnOrbSwitch()
