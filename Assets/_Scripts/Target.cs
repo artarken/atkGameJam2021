@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TargetType { orb, tunnel, door, sign, lever }
+public enum TargetType { orb, tunnel, door, sign, lever, hole }
 public class Target : MonoBehaviour
 {
 
     public TargetType targetType;
-    public bool isActive;
+    public bool isActive = true;
 
     //Orb Target
     public int regionID;
@@ -45,6 +45,9 @@ public class Target : MonoBehaviour
 
     public void Unlock()
     {
-
+        if (thisDoor.isLocked)
+        {
+            thisDoor.Unlock();
+        }
     }
 }

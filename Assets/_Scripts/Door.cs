@@ -7,15 +7,29 @@ public class Door : MonoBehaviour
     public bool isLocked;
     public bool isOpen;
 
-    // Start is called before the first frame update
-    void Start()
+    public Sprite lockedSprite;
+    public Sprite unlockedSprite;
+    public Sprite openSprite;
+
+    public SpriteRenderer rend;
+    public BoxCollider2D coll;
+
+    private void Start()
     {
-        
+        rend = this.transform.GetComponent<SpriteRenderer>();
+        coll = this.transform.GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Unlock()
     {
-        
+        rend.sprite = unlockedSprite;
+        isLocked = false;
+    }
+
+    public void Open()
+    {
+        rend.sprite = openSprite;
+        coll.offset = new Vector2(0.4f, 0f);
+        coll.size = new Vector2(0.25f, 1f);
     }
 }

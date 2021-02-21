@@ -26,6 +26,57 @@ TextureImporter:
   - first:
       213: 3115664770879376000
     second: Orb Target
+  - first:
+      213: -8866255815340839701
+    second: Door Locked
+  - first:
+      213: 2701162791331864246
+    second: Door Unlocked
+  - first:
+      213: 6302000529924761860
+    second: Door open
+  - first:
+      213: 8843355432405499650
+    second: Special Tiles_11
+  - first:
+      213: -4194764414395785870
+    second: Special Tiles_12
+  - first:
+      213: -8095228689247233714
+    second: Special Tiles_13
+  - first:
+      213: 3503996027957607241
+    second: Special Tiles_14
+  - first:
+      213: -524271055711803474
+    second: Special Tiles_15
+  - first:
+      213: -2290170386295309143
+    second: Special Tiles_16
+  - first:
+      213: 6097247377724111715
+    second: Special Tiles_17
+  - first:
+      213: 2906787472376113101
+    second: Special Tiles_18
+  - first:
+      213: 6764903217825843496
+    second: Special Tiles_19
+  - first:
+      213: 5676547703241278622
+    second: Special Tiles_20
+  - first:
+      213: -127221399475468425
+    second: Special Tiles_21
+  - first:
+      213: 4364570345663489078
+    second: Special Tiles_22
+  - first:
+      213: -7113530398461936768
+    second: Special Tiles_23
+  - first:
+      213: 4699307760521879459
+    second: Special Tiles_24
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,7 +184,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,7 +205,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -175,7 +226,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,7 +247,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,7 +268,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -238,7 +289,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -259,7 +310,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -280,7 +331,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -288,6 +339,69 @@ TextureImporter:
       bones: []
       spriteID: 08ac6730a901d3b20800000000000000
       internalID: 3115664770879376000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door Locked
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec2ed6bf4bb4f480800000000000000
+      internalID: -8866255815340839701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door Unlocked
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be96d15f357c7520800000000000000
+      internalID: 2701162791331864246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Door open
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4092d70b714357750800000000000000
+      internalID: 6302000529924761860
       vertices: []
       indices: 
       edges: []

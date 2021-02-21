@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public OrbType selectedOrb;
     public List<Orb> Orbs;
 
+    public float reachDistance;
+
     //variables for movement
     public InputAction moveAction;
     public float speed;
@@ -93,6 +95,7 @@ public class Player : MonoBehaviour
     {
         ShowHelperText(mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue()).ToString());
         Debug.Log(mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
+        Debug.Log("Distance: " + Vector2.Distance(this.transform.position, mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue())));
 
         RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero);
 
@@ -101,20 +104,48 @@ public class Player : MonoBehaviour
             if (hit.transform.CompareTag("Target") || hit.transform.CompareTag("Orb Target"))
             {
                 Target t = hit.transform.GetComponent<Target>();
+                Debug.Log(hit.transform.name);
 
                 switch (t.targetType)
                 {
                     case TargetType.door:
-                        break;
-                    case TargetType.lever:
-                        if (t.thisLever.isPressed)
+                        if(Vector2.Distance(this.transform.position, mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue())) <= reachDistance)
                         {
-                            ShowHelperText(t.helpersLineNotActive);
+                            if (t.thisDoor.isLocked)
+                            {
+                                ShowHelperText(t.helpersLineActive[0]);
+                            }
+                            else if (t.thisDoor.isOpen)
+                            {
+                                ShowHelperText(t.helpersLineNotActive);
+                            }
+                            else
+                            {
+                                t.thisDoor.Open();
+                                ShowHelperText(t.helpersLineOther);
+                            }
                         }
                         else
                         {
-                            UseLever(t.thisLever);
-                            ShowHelperText(t.helpersLineActive[0]);
+                            ShowHelperText("You can't reach that");
+                        }
+                        break;
+                    case TargetType.lever:
+                        if (Vector2.Distance(this.transform.position, mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue())) <= reachDistance)
+                        {
+                            if (t.thisLever.isPressed)
+                            {
+                                ShowHelperText(t.helpersLineNotActive);
+                            }
+                            else
+                            {
+                                UseLever(t.thisLever);
+                                ShowHelperText(t.helpersLineActive[0]);
+                            }
+                        }
+                        else
+                        {
+                            ShowHelperText("You can't reach that");
                         }
                         break;
                     case TargetType.orb:
@@ -128,6 +159,10 @@ public class Player : MonoBehaviour
                         {
                             ShowHelperText("There is already an orb over there, you need to recall it to replace it.");
                         }
+                        else if (selectedOrb == OrbType.None)
+                        {
+                            ShowHelperText(t.helpersLineOther);
+                        }
                         else
                         {
                             ThrowOrb(t);
@@ -135,10 +170,25 @@ public class Player : MonoBehaviour
                         }
                         break;
                     case TargetType.sign:
-                        ShowHelperText(t.helpersLineActive[0]);
+                        if (Vector2.Distance(this.transform.position, mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue())) <= reachDistance)
+                        {
+
+                            ShowHelperText(t.helpersLineActive[0]);
+                        }
+                        else
+                        {
+                            ShowHelperText("You can't reach that");
+                        }
                         break;
                     case TargetType.tunnel:
-                        UseTunnel(t.otherEnd);
+                        if (Vector2.Distance(this.transform.position, mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue())) <= reachDistance)
+                        {
+                            UseTunnel(t.otherEnd);
+                        }
+                        else
+                        {
+                            ShowHelperText("You can't reach that");
+                        }
                         break;
                 }
             }
@@ -149,15 +199,18 @@ public class Player : MonoBehaviour
     {
         l.isPressed = true;
         l.unlockTarget.Unlock();
+        l.Press();
     }
 
     void UseTunnel(Target exit)
     {
-
+        this.transform.position = new Vector3(exit.transform.position.x, exit.transform.position.y);
     }
 
     void ThrowOrb(Target target)
     {
+
+
         switch (selectedOrb)
         {
             case OrbType.Future:

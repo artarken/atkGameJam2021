@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Target
+  - Orb Target
+  - Room
+  - Plate
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -15,7 +20,7 @@ TagManager:
   - 
   - maps
   - Player
-  - 
+  - Wall
   - 
   - 
   - 
@@ -41,9 +46,15 @@ TagManager:
   - name: Main Map
     uniqueID: 1193362309
     locked: 0
+  - name: Time Map
+    uniqueID: 3205391279
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Player
     uniqueID: 2130491347
+    locked: 0
+  - name: Overlay
+    uniqueID: 435131467
     locked: 0
