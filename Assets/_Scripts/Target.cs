@@ -8,6 +8,8 @@ public class Target : MonoBehaviour
 
     public TargetType targetType;
     public bool isActive = true;
+    public bool hasAudio;
+    AudioSource audio;
 
     //Orb Target
     public int regionID;
