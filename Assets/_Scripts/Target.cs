@@ -16,7 +16,7 @@ public class Target : MonoBehaviour
     public Target otherEnd;
 
     //Helper Text (If applicable)
-    public string helpersLineActive;
+    public List<string> helpersLineActive;
     public string helpersLineNotActive;
     public string helpersLineOther;
 

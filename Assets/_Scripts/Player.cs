@@ -16,9 +16,7 @@ public class Player : MonoBehaviour
 
     //variables for movement
     public InputAction moveAction;
-    public float maxSpeed;
-    public float acceleration;
-    private Vector2 direction;
+    public float speed;
     private Rigidbody2D rb;
 
     //variables for UI Interactions
@@ -36,11 +34,23 @@ public class Player : MonoBehaviour
     {
         if (moveAction.ReadValue<Vector2>() != Vector2.zero)
         {
-            rb.velocity = moveAction.ReadValue<Vector2>()*maxSpeed;
+            rb.velocity = moveAction.ReadValue<Vector2>()*speed;
         }
         else
         {
             rb.velocity = Vector2.zero;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.transform.CompareTag("Room"))
+        {
+
+        }
+        else if (c.transform.CompareTag("Plate"))
+        {
+
         }
     }
 
@@ -81,6 +91,7 @@ public class Player : MonoBehaviour
 
     public void OnUse()
     {
+        ShowHelperText(mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue()).ToString());
         Debug.Log(mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
 
         RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero);
@@ -103,7 +114,7 @@ public class Player : MonoBehaviour
                         else
                         {
                             UseLever(t.thisLever);
-                            ShowHelperText(t.helpersLineActive);
+                            ShowHelperText(t.helpersLineActive[0]);
                         }
                         break;
                     case TargetType.orb:
@@ -120,11 +131,11 @@ public class Player : MonoBehaviour
                         else
                         {
                             ThrowOrb(t);
-                            ShowHelperText(t.helpersLineActive);
+                            ShowHelperText(t.helpersLineActive[(int)selectedOrb]);
                         }
                         break;
                     case TargetType.sign:
-                        ShowHelperText(t.helpersLineActive);
+                        ShowHelperText(t.helpersLineActive[0]);
                         break;
                     case TargetType.tunnel:
                         UseTunnel(t.otherEnd);
@@ -172,6 +183,8 @@ public class Player : MonoBehaviour
         txtHelper.SetActive(true);
         imgHelperBubble.SetActive(true);
         txtHelper.GetComponent<Text>().text = helperText;
+
+        Invoke("ClearHelperText", 15);
     }
 
     void ClearHelperText()

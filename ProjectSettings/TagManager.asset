@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - maps
-  - 
+  - Player
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Main Map
+    uniqueID: 1193362309
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2130491347
     locked: 0
