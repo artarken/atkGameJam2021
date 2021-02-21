@@ -52,6 +52,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Orb
+    uniqueID: 3413696365
+    locked: 0
   - name: Player
     uniqueID: 2130491347
     locked: 0

@@ -8,6 +8,8 @@ public enum OrbType { None = -1, Past, Future }
 public class Player : MonoBehaviour
 {
     public Camera mainCamera;
+    public GameObject mainWorld;
+    public GameObject thisSprite;
 
     public bool pastOrbOut;
     public bool futureOrbOut;
@@ -225,11 +227,14 @@ public class Player : MonoBehaviour
 
     void ThrowOrb(Target target)
     {
-        Orbs[(int)selectedOrb].presentMap.ModifiedRegions[target.regionID].SetActive(false);
-        Orbs[(int)selectedOrb].timeMap.ModifiedRegions[target.regionID].SetActive(true);
-        Orbs[(int)selectedOrb].curentTarget = target;
-        Orbs[(int)selectedOrb].isActive = true;
-
+        Orb o = Orbs[(int)selectedOrb];
+        //presentMap.ModifiedRegions[target.regionID].SetActive(false);
+        //timeMap.ModifiedRegions[target.regionID].SetActive(true);
+        o.curentTarget = target;
+        o.isActive = true;
+        o.moveTarget = target.transform.position;
+        o.isMoving = true;
+        o.transform.SetParent(mainWorld.transform);
         //canChangeOrb = true;
     }
 
